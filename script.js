@@ -10,13 +10,13 @@ function generateTarget() {
 
 // Compare the human guess and computer guess against the target number
 const compareGuesses = (humanGuess, computerGuess, target) => {
-    if (Math.abs(humanGuess - target) <= Math.abs(computerGuess - target)) {
+    if (humanGuess < 0 || humanGuess > 9) {
+        alert("Your guess must be a number between 0 and 9.");
+        return null; // Invalid human guess, computer wins by default
+    } else if (Math.abs(humanGuess - target) <= Math.abs(computerGuess - target)) {
         return true; // It's a tie or human's number is closer to target than computer, human wins
     } else if (Math.abs(humanGuess - target) > Math.abs(computerGuess - target)) {
         return false; // Computer's number is closer to target, computer wins
-    } else if (humanGuess < 0 || humanGuess > 9) {
-        alert("Your guess must be a number between 0 and 9.");
-        return null; // Invalid human guess, computer wins by default
     }
 }
 
