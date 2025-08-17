@@ -8,17 +8,15 @@ function generateTarget() {
     return Math.floor(Math.random() * 10);
 }
 
-/*Check the distance between the human guess to target, and computer guess to target
-const getAbsoluteDistance = (humanDistance, computerDistance) => {
-    if ()
-}*/
-
 // Compare the human guess and computer guess against the target number
 const compareGuesses = (humanGuess, computerGuess, target) => {
     if (Math.abs(humanGuess - target) <= Math.abs(computerGuess - target)) {
         return true; // It's a tie or human's number is closer to target than computer, human wins
-    } else {
+    } else if (Math.abs(humanGuess - target) > Math.abs(computerGuess - target)) {
         return false; // Computer's number is closer to target, computer wins
+    } else if (humanGuess < 0 || humanGuess > 9) {
+        alert("Your guess must be a number between 0 and 9.");
+        return null; // Invalid human guess, computer wins by default
     }
 }
 
